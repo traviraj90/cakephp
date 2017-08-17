@@ -1800,6 +1800,24 @@ TEXT;
     }
 
     /**
+     * Test nested extended views in plugins
+     *
+     * @return void
+     */
+    public function testExtendNestedPlugin()
+    {
+        $content = $this->View->render('TestPlugin.nested_extends');
+        $expected = <<<TEXT
+test plugin default layout
+test plugin base layout
+test plugin extends layout
+test plugin nested extends
+
+TEXT;
+        $this->assertEquals($expected, $content);
+    }
+
+    /**
      * Make sure that extending the current view with itself causes an exception
      *
      * @return void
